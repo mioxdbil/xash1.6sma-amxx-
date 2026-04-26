@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mioxd 的个人博客</title>
+    <title>Mioxd 的个人博客</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #fafaf8;
@@ -14,354 +16,144 @@
             --border: #eae6e0;
             --shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
             --radius: 16px;
-            --font-sans: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            --font-serif: 'Noto Serif SC', 'SimSun', serif;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .navbar {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-            padding: 0 24px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .blog-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--text);
-            text-decoration: none;
-        }
-        .blog-title span {
-            color: var(--accent);
-            font-weight: 800;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-            align-items: center;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 6px 0;
-            border-bottom: 2px solid transparent;
-            transition: all 0.2s ease;
-        }
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--accent);
-            border-bottom-color: var(--accent);
-        }
-
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.6rem;
-            cursor: pointer;
-            color: var(--text);
-        }
-
-        .hero-image-section {
-            width: 100%;
-            height: 320px;
-            background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80') center/cover no-repeat;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero-image-section::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(30, 30, 30, 0.35);
-        }
-        .hero-text {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: #fff;
-        }
-        .hero-text h1 {
-            font-size: 2.6rem;
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        .hero-text p {
-            font-size: 0.95rem;
-            opacity: 0.85;
-            letter-spacing: 2px;
-            margin-top: 8px;
-        }
-
-        .main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 24px;
-            flex: 1;
-            width: 100%;
-        }
-
-        /* 关于卡片内的头像与名字布局 */
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            margin-bottom: 18px;
-        }
-        .avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--border);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-        .profile-info h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text);
-            margin: 0;
-        }
-        .profile-subtitle {
-            color: var(--text-light);
-            font-size: 0.85rem;
-            margin-top: 2px;
-        }
-
-        .about-card {
-            background: var(--surface);
-            border-radius: var(--radius);
-            padding: 36px 32px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            margin-bottom: 40px;
-        }
-        .about-card .intro-text {
-            color: var(--text-light);
-            line-height: 1.8;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-        .social-row {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            color: var(--text-light);
-            font-size: 0.85rem;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 20px;
-            background: #f5f3ef;
-            transition: all 0.2s ease;
-        }
-        .social-link:hover {
-            background: #e3dfd7;
-            color: var(--accent);
-            transform: translateY(-1px);
-        }
-
-        .bilibili-icon {
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-        }
-
-        .blog-posts-section {
-            background: var(--surface);
-            border-radius: var(--radius);
-            padding: 32px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-        .blog-posts-section h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .empty-posts {
-            text-align: center;
-            padding: 48px 20px;
-            color: var(--text-light);
-            border: 2px dashed var(--border);
-            border-radius: var(--radius);
-            background: #fdfdfc;
-        }
-        .empty-posts .icon-placeholder {
-            font-size: 3rem;
-            margin-bottom: 12px;
-            opacity: 0.7;
-        }
-        .empty-posts p {
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-        }
-        .empty-posts .sub {
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.8rem;
-            color: var(--text-light);
-            border-top: 1px solid var(--border);
-            background: #fff;
-            margin-top: auto;
-        }
-
-        @media (max-width: 640px) {
-            .hero-image-section {
-                height: 220px;
-            }
-            .hero-text h1 {
-                font-size: 1.8rem;
-                letter-spacing: 2px;
-            }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 64px;
-                right: 12px;
-                background: rgba(255,255,255,0.97);
-                flex-direction: column;
-                gap: 14px;
-                padding: 18px 24px;
-                border-radius: 12px;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-                border: 1px solid var(--border);
-            }
-            .nav-links.open {
-                display: flex;
-            }
-            .hamburger {
-                display: block;
-            }
-            .about-card,
-            .blog-posts-section {
-                padding: 24px 20px;
-            }
-            .profile-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:1.6; min-height:100vh; display:flex; flex-direction:column; }
+        .navbar { background:rgba(255,255,255,0.75); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 24px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
+        .blog-title { font-family:var(--font-serif); font-size:1.25rem; font-weight:700; letter-spacing:1px; color:var(--text); text-decoration:none; }
+        .blog-title span { color:var(--accent); font-weight:800; }
+        .nav-links { display:flex; gap:28px; list-style:none; align-items:center; }
+        .nav-links a { text-decoration:none; color:var(--text-light); font-size:0.9rem; font-weight:500; padding:6px 0; border-bottom:2px solid transparent; transition:all 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color:var(--accent); border-bottom-color:var(--accent); }
+        .hamburger { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text); }
+        .hero-image-section { width:100%; height:320px; background:url('https://ys-e.ysepan.com/wap/yingbi/86KRFd075UjRjCh/RAL0lf9a84iCkJv99c57UFT68lr4UN/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%97%A5%E6%BC%AB-%E8%BD%BB%E9%9F%B3%E5%B0%91%E5%A5%B3.png') center/cover no-repeat; position:relative; display:flex; align-items:center; justify-content:center; }
+        .hero-image-section::after { content:''; position:absolute; inset:0; background:rgba(30,30,30,0.35); }
+        .hero-text { position:relative; z-index:2; text-align:center; color:#fff; }
+        .hero-text h1 { font-family:var(--font-serif); font-size:2.6rem; font-weight:700; letter-spacing:4px; text-shadow:0 4px 12px rgba(0,0,0,0.3); }
+        .hero-text p { font-size:0.95rem; opacity:0.85; letter-spacing:2px; margin-top:8px; }
+        .main-content { max-width:900px; margin:0 auto; padding:40px 24px; flex:1; width:100%; }
+        .profile-header { display:flex; align-items:center; gap:18px; margin-bottom:18px; flex-wrap:wrap; }
+        .avatar { width:72px; height:72px; border-radius:50%; object-fit:cover; border:3px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+        .profile-info h2 { font-family:var(--font-serif); font-size:1.6rem; font-weight:700; color:var(--text); margin:0; }
+        .profile-subtitle { color:var(--text-light); font-size:0.85rem; margin-top:2px; }
+        .about-card { background:var(--surface); border-radius:var(--radius); padding:36px 32px; box-shadow:var(--shadow); border:1px solid var(--border); margin-bottom:40px; }
+        .about-card .intro-text { color:var(--text-light); line-height:1.8; font-size:0.95rem; margin-bottom:20px; }
+        .social-row { display:flex; gap:16px; flex-wrap:wrap; }
+        .social-link { display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:var(--text-light); font-size:0.85rem; font-weight:500; padding:8px 18px; border-radius:24px; background:#f5f3ef; transition:all 0.2s; border:1px solid transparent; }
+        .social-link:hover { background:#e3dfd7; color:var(--accent); transform:translateY(-2px); box-shadow:0 4px 10px rgba(0,0,0,0.06); }
+        .bilibili-icon { width:18px; height:18px; flex-shrink:0; color:#fb7299; }
+        .blog-posts-section { background:var(--surface); border-radius:var(--radius); padding:32px; box-shadow:var(--shadow); border:1px solid var(--border); }
+        .blog-posts-section h2 { font-family:var(--font-serif); font-size:1.5rem; font-weight:700; margin-bottom:24px; display:flex; align-items:center; gap:8px; }
+        .blog-posts-section #readme-content { line-height:1.8; color:var(--text-light); }
+        .blog-posts-section #readme-content h1,
+        .blog-posts-section #readme-content h2,
+        .blog-posts-section #readme-content h3 { color:var(--text); margin:20px 0 10px; }
+        .blog-posts-section #readme-content p { margin-bottom:12px; }
+        .blog-posts-section #readme-content ul { padding-left:24px; margin-bottom:12px; }
+        .blog-posts-section #readme-content code { background:#f0f0f0; padding:2px 6px; border-radius:4px; font-size:0.9em; }
+        .blog-posts-section #readme-content pre { background:#2d2d2d; color:#f8f8f2; padding:16px; border-radius:8px; overflow-x:auto; margin-bottom:16px; }
+        .blog-posts-section #readme-content pre code { background:none; padding:0; color:inherit; }
+        .blog-posts-section #readme-content blockquote { border-left:4px solid var(--accent); margin:12px 0; padding:8px 16px; background:var(--accent-soft); border-radius:0 8px 8px 0; }
+        .blog-posts-section #readme-content table { border-collapse:collapse; width:100%; margin:16px 0; }
+        .blog-posts-section #readme-content th,
+        .blog-posts-section #readme-content td { border:1px solid var(--border); padding:8px 12px; text-align:left; }
+        .footer { text-align:center; padding:20px; font-size:0.8rem; color:var(--text-light); border-top:1px solid var(--border); background:#fff; margin-top:auto; }
+        .footer a { color:var(--accent); text-decoration:none; }
+        @media (max-width:640px) {
+            .hero-image-section { height:220px; }
+            .hero-text h1 { font-size:1.8rem; letter-spacing:2px; }
+            .nav-links { display:none; position:absolute; top:64px; right:12px; background:rgba(255,255,255,0.97); flex-direction:column; gap:14px; padding:18px 24px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.08); border:1px solid var(--border); }
+            .nav-links.open { display:flex; }
+            .hamburger { display:block; }
+            .about-card, .blog-posts-section { padding:24px 20px; }
+            .profile-header { flex-direction:column; align-items:flex-start; gap:12px; }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <a href="#" class="blog-title"><span>mioxd</span> · 博客</a>
+        <a href="/" class="blog-title"><span>Mioxd</span> · 博客</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#" class="active">首页</a></li>
-            <li><a href="#">博客</a></li>
+            <li><a href="/" class="active">首页</a></li>
+            <li><a href="#">文章</a></li>
             <li><a href="#">关于</a></li>
-            <li><a href="#">联系</a></li>
         </ul>
         <button class="hamburger" id="hamburgerBtn">☰</button>
     </nav>
 
     <section class="hero-image-section">
         <div class="hero-text">
-            <h1>mioxd</h1>
+            <h1>Mioxd</h1>
             <p>安静地写点东西</p>
         </div>
     </section>
 
     <main class="main-content">
         <section class="about-card">
-            <!-- 头像和名字区域 -->
             <div class="profile-header">
-                <img 
-                    src="https://i1.hdslb.com/bfs/face/33d11f73c82b002d38bb6300a5a5610175b5610f.jpg@168w_168h_1c.webp" 
-                    alt="mioxd的头像" 
+                <img
+                    src="https://i1.hdslb.com/bfs/face/33d11f73c82b002d38bb6300a5a5610175b5610f.jpg@168w_168h_1c.webp"
+                    alt="Mioxd 的头像"
                     class="avatar"
+                    loading="lazy"
                 >
                 <div class="profile-info">
-                    <h2>mioxd</h2>
+                    <h2>Mioxd</h2>
                     <p class="profile-subtitle">个人博客 · 记录与分享</p>
                 </div>
             </div>
             <p class="intro-text">
-                欢迎来到我的个人博客。这里没有固定的主题，可能会写代码、设计、生活感悟，或者任何我感兴趣的事情。
-                建这个博客的目的很简单——在一个安静的地方记录和分享。
+                欢迎来到我的个人博客。这里记录代码、生活和思考。服务端插件预计会弄很长时间。
             </p>
             <div class="social-row">
                 <a href="https://b23.tv/C3TnIpa" target="_blank" class="social-link">
-                    <svg class="bilibili-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18.223 3.086a1.25 1.25 0 0 1 0 1.768L17.08 5.996h1.17A3.75 3.75 0 0 1 22 9.747v7.5a3.75 3.75 0 0 1-3.75 3.75H5.75A3.75 3.75 0 0 1 2 17.247v-7.5a3.75 3.75 0 0 1 3.75-3.75h1.166L5.775 4.855a1.25 1.25 0 1 1 1.767-1.768l2.652 2.652c.079.079.145.165.198.257h3.213c.053-.092.12-.178.198-.257l2.652-2.652a1.25 1.25 0 0 1 1.768 0z"/>
-                    </svg>
+                    <svg class="bilibili-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.223 3.086a1.25 1.25 0 0 1 0 1.768L17.08 5.996h1.17A3.75 3.75 0 0 1 22 9.747v7.5a3.75 3.75 0 0 1-3.75 3.75H5.75A3.75 3.75 0 0 1 2 17.247v-7.5a3.75 3.75 0 0 1 3.75-3.75h1.166L5.775 4.855a1.25 1.25 0 1 1 1.767-1.768l2.652 2.652c.079.079.145.165.198.257h3.213c.053-.092.12-.178.198-.257l2.652-2.652a1.25 1.25 0 0 1 1.768 0z"/></svg>
                     Bilibili
                 </a>
             </div>
         </section>
 
         <section class="blog-posts-section">
-            <h2>📝 文章列表</h2>
-            <div class="empty-posts">
-                <div class="icon-placeholder">📄</div>
-                <p>还没有发布任何文章</p>
-                <p class="sub">当 mioxd 写出新内容时，会出现在这里</p>
+            <h2>📝 最新日志</h2>
+            <div id="readme-content">
+                <p>正在加载内容...</p>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <p>© 2025 mioxd — 由 HTML & CSS 构建</p>
+        <p>© 2025 Mioxd · 由 GitHub Pages 驱动</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const navLinks = document.getElementById('navLinks');
-        hamburgerBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-        });
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-            });
-        });
+        const owner = 'mioxdbil';
+        const repo = 'mioxdbil.github.io';
+
+        async function loadReadme() {
+            const container = document.getElementById('readme-content');
+            try {
+                const response = await fetch(
+                    `https://api.github.com/repos/${owner}/${repo}/readme`,
+                    { headers: { Accept: 'application/vnd.github.v3.raw' } }
+                );
+                if (!response.ok) throw new Error('无法加载 README.md');
+                const markdown = await response.text();
+                container.innerHTML = marked.parse(markdown);
+            } catch (error) {
+                container.innerHTML = `<p>⚠️ 内容加载失败：${error.message}</p>`;
+            }
+        }
+        loadReadme();
+
+        const btn = document.getElementById('hamburgerBtn');
+        const nav = document.getElementById('navLinks');
+        if(btn && nav) {
+            btn.addEventListener('click', () => nav.classList.toggle('open'));
+            nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+        }
     </script>
 </body>
 </html>
