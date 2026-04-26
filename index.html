@@ -29,7 +29,7 @@
         .nav-links a { text-decoration:none; color:var(--text-light); font-size:0.9rem; font-weight:500; padding:6px 0; border-bottom:2px solid transparent; transition:all 0.2s; }
         .nav-links a:hover, .nav-links a.active { color:var(--accent); border-bottom-color:var(--accent); }
         .hamburger { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text); }
-        
+
         /* 语言切换按钮 */
         .lang-switch {
             background: var(--accent-soft);
@@ -48,11 +48,11 @@
             color: #fff;
         }
 
-        .hero-image-section { 
-            width:100%; 
-            height:320px; 
-            background: url('https://ys-e.ysepan.com/wap/yingbi/86KRFd075UjRjCh/RAL0lf9a84iCkJv99c57UFT68lr4UN/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%97%A5%E6%BC%AB-%E8%BD%BB%E9%9F%B3%E5%B0%91%E5%A5%B3.png') center/cover no-repeat; 
-            position:relative; display:flex; align-items:center; justify-content:center; 
+        .hero-image-section {
+            width:100%;
+            height:320px;
+            background: url('https://ys-e.ysepan.com/wap/yingbi/86KRFd075UjRjCh/RAL0lf9a84iCkJv99c57UFT68lr4UN/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%97%A5%E6%BC%AB-%E8%BD%BB%E9%9F%B3%E5%B0%91%E5%A5%B3.png') center/cover no-repeat;
+            position:relative; display:flex; align-items:center; justify-content:center;
         }
         .hero-image-section::after { content:''; position:absolute; inset:0; background:rgba(30,30,30,0.35); }
         .hero-text { position:relative; z-index:2; text-align:center; color:#fff; }
@@ -85,13 +85,16 @@
         .footer { text-align:center; padding:20px; font-size:0.8rem; color:var(--text-light); border-top:1px solid var(--border); background:#fff; margin-top:auto; }
         .footer a { color:var(--accent); text-decoration:none; }
 
-        /* 语言切换时隐藏不属于当前语言的元素 */
-        [data-lang] { display: none; }
-        [data-lang="zh"] { display: initial; }
-        
-        /* 英文模式下 */
-        html.en [data-lang="zh"] { display: none !important; }
-        html.en [data-lang="en"] { display: initial !important; }
+        /* 语言切换样式修复 */
+        [data-lang] {
+            display: none !important;
+        }
+        html:not(.en) [data-lang="zh"] {
+            display: revert !important;
+        }
+        html.en [data-lang="en"] {
+            display: revert !important;
+        }
 
         @media (max-width:640px) {
             .hero-image-section { height:220px; }
