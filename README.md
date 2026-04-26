@@ -1,7 +1,7 @@
 ## ✨ 2026-04-27 — 个人博客正式上线 · Blog Launch
 
 **🌐 博客地址 / Blog URL**  
-🔗 [**Mioxd 的个人博客**](https://mioxdbil.github.io)
+🔗 [**Mioxd 的个人博客**](https://mioxdbil.github.io/xash1.6sma-amxx-/)
 
 **📖 介绍 / Introduction**  
 这个博客是 **Xash 服务端插件代码的更新日志网站**，专门记录插件开发的每一步进展。  
