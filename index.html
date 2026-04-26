@@ -30,11 +30,11 @@
         .nav-links a:hover, .nav-links a.active { color:var(--accent); border-bottom-color:var(--accent); }
         .hamburger { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text); }
         
-        /* 👇 背景图已更换为你仓库中的图片 */
+        /* 原来的背景图 */
         .hero-image-section { 
             width:100%; 
             height:320px; 
-            background: #3b4b5e url('https://raw.githubusercontent.com/mioxdbil/xash1.6sma-amxx-/main/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%97%A5%E6%BC%AB-%E8%BD%BB%E9%9F%B3%E5%B0%91%E5%A5%B3%20(1).png') center/cover no-repeat; 
+            background: url('https://ys-e.ysepan.com/wap/yingbi/86KRFd075UjRjCh/RAL0lf9a84iCkJv99c57UFT68lr4UN/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%97%A5%E6%BC%AB-%E8%BD%BB%E9%9F%B3%E5%B0%91%E5%A5%B3.png') center/cover no-repeat; 
             position:relative; 
             display:flex; 
             align-items:center; 
@@ -164,7 +164,6 @@
         }
         loadReadme();
 
-        // 汉堡菜单交互
         const btn = document.getElementById('hamburgerBtn');
         const nav = document.getElementById('navLinks');
         if(btn && nav) {
