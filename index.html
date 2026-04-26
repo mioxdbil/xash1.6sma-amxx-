@@ -30,7 +30,11 @@
         .nav-links a:hover, .nav-links a.active { color:var(--accent); border-bottom-color:var(--accent); }
         .hamburger { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text); }
 
-        /* 语言切换按钮 */
+        /* 语言切换按钮和下拉面板 */
+        .lang-wrapper {
+            position: relative;
+            z-index: 200;
+        }
         .lang-switch {
             background: var(--accent-soft);
             border: 1px solid var(--accent);
@@ -46,6 +50,41 @@
         .lang-switch:hover {
             background: var(--accent);
             color: #fff;
+        }
+        .lang-panel {
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 8px 0;
+            min-width: 130px;
+            display: none;
+            flex-direction: column;
+        }
+        .lang-panel.open {
+            display: flex;
+        }
+        .lang-option {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text);
+            transition: background 0.2s;
+            background: none;
+            border: none;
+            text-align: left;
+            width: 100%;
+        }
+        .lang-option:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+        .lang-option.active {
+            font-weight: 700;
+            color: var(--accent);
         }
 
         .hero-image-section {
@@ -85,7 +124,7 @@
         .footer { text-align:center; padding:20px; font-size:0.8rem; color:var(--text-light); border-top:1px solid var(--border); background:#fff; margin-top:auto; }
         .footer a { color:var(--accent); text-decoration:none; }
 
-        /* 语言切换样式修复 */
+        /* 语言切换样式 */
         [data-lang] {
             display: none !important;
         }
@@ -115,10 +154,14 @@
             <li><a href="#" data-lang="zh">文章</a><a href="#" data-lang="en">Posts</a></li>
             <li><a href="#" data-lang="zh">关于</a><a href="#" data-lang="en">About</a></li>
         </ul>
-        <button class="lang-switch" onclick="toggleLang()" title="Switch Language / 切换语言">
-            <span data-lang="zh">🌐 English</span>
-            <span data-lang="en">🌐 中文</span>
-        </button>
+        <!-- 语言选择器 -->
+        <div class="lang-wrapper">
+            <button class="lang-switch" id="langToggleBtn" title="选择语言 / Select Language">🌐</button>
+            <div class="lang-panel" id="langPanel">
+                <button class="lang-option active" data-lang-code="zh">🇨🇳 中文</button>
+                <button class="lang-option" data-lang-code="en">🇬🇧 English</button>
+            </div>
+        </div>
         <button class="hamburger" id="hamburgerBtn">☰</button>
     </nav>
 
@@ -193,13 +236,38 @@
                 document.documentElement.classList.remove('en');
             }
             localStorage.setItem('blog-lang', lang);
+            // 更新面板中的激活状态
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                opt.classList.remove('active');
+                if (opt.dataset.langCode === lang) {
+                    opt.classList.add('active');
+                }
+            });
         }
 
-        function toggleLang() {
-            const currentLang = document.documentElement.classList.contains('en') ? 'en' : 'zh';
-            const newLang = currentLang === 'zh' ? 'en' : 'zh';
-            setLang(newLang);
-        }
+        // 语言面板展开/收起
+        const langToggleBtn = document.getElementById('langToggleBtn');
+        const langPanel = document.getElementById('langPanel');
+
+        langToggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langPanel.classList.toggle('open');
+        });
+
+        // 点击面板中的语言选项
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const lang = this.dataset.langCode;
+                setLang(lang);
+                langPanel.classList.remove('open');
+            });
+        });
+
+        // 点击页面其他地方关闭面板
+        document.addEventListener('click', function() {
+            langPanel.classList.remove('open');
+        });
 
         // 页面加载时读取用户上次的语言选择（默认中文）
         (function() {
