@@ -22,7 +22,7 @@
 <details>
 <summary><b>🇬🇧 English</b></summary>
 
-A collection of Half-Life server plugins based on the **Xash3D** / **Xash3D FWGS** engine.  
+Server plugins are expected to take a long time to develop.  
 All plugin source code and configuration files will be continuously updated in this repository.
 
 #### 📦 Repository Description
