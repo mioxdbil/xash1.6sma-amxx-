@@ -77,4 +77,85 @@
         <a href="/" class="blog-title"><span>Mioxd</span> · 博客</a>
         <ul class="nav-links" id="navLinks">
             <li><a href="/" class="active">首页</a></li>
-            <li><a href="#">
+            <li><a href="#">文章</a></li>
+            <li><a href="#">关于</a></li>
+        </ul>
+        <button class="hamburger" id="hamburgerBtn">☰</button>
+    </nav>
+
+    <section class="hero-image-section">
+        <div class="hero-text">
+            <h1>Mioxd</h1>
+            <p>安静地写点东西</p>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <section class="about-card">
+            <div class="profile-header">
+                <img
+                    src="https://i1.hdslb.com/bfs/face/33d11f73c82b002d38bb6300a5a5610175b5610f.jpg@168w_168h_1c.webp"
+                    alt="Mioxd 的头像"
+                    class="avatar"
+                    loading="lazy"
+                >
+                <div class="profile-info">
+                    <h2>Mioxd</h2>
+                    <p class="profile-subtitle">个人博客 · 记录与分享</p>
+                </div>
+            </div>
+            <p class="intro-text">
+                欢迎来到我的个人博客。这里记录代码、生活和思考。服务端插件预计会弄很长时间。
+            </p>
+            <div class="social-row">
+                <a href="https://b23.tv/C3TnIpa" target="_blank" class="social-link">
+                    <svg class="bilibili-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.223 3.086a1.25 1.25 0 0 1 0 1.768L17.08 5.996h1.17A3.75 3.75 0 0 1 22 9.747v7.5a3.75 3.75 0 0 1-3.75 3.75H5.75A3.75 3.75 0 0 1 2 17.247v-7.5a3.75 3.75 0 0 1 3.75-3.75h1.166L5.775 4.855a1.25 1.25 0 1 1 1.767-1.768l2.652 2.652c.079.079.145.165.198.257h3.213c.053-.092.12-.178.198-.257l2.652-2.652a1.25 1.25 0 0 1 1.768 0z"/></svg>
+                    Bilibili
+                </a>
+            </div>
+        </section>
+
+        <section class="blog-posts-section">
+            <h2>📝 最新日志</h2>
+            <div id="readme-content">
+                <p>正在加载内容...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Mioxd · 由 GitHub Pages 驱动</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // 指定要读取的仓库（你的 Xash 插件仓库）
+        const owner = 'mioxdbil';
+        const repo = 'xash1.6sma-amxx-';   // 博客将显示这个仓库的 README.md
+
+        async function loadReadme() {
+            const container = document.getElementById('readme-content');
+            try {
+                const response = await fetch(
+                    `https://api.github.com/repos/${owner}/${repo}/readme`,
+                    { headers: { Accept: 'application/vnd.github.v3.raw' } }
+                );
+                if (!response.ok) throw new Error('无法加载 README.md');
+                const markdown = await response.text();
+                container.innerHTML = marked.parse(markdown);
+            } catch (error) {
+                container.innerHTML = `<p>⚠️ 内容加载失败：${error.message}</p>`;
+            }
+        }
+        loadReadme();
+
+        // 汉堡菜单交互
+        const btn = document.getElementById('hamburgerBtn');
+        const nav = document.getElementById('navLinks');
+        if(btn && nav) {
+            btn.addEventListener('click', () => nav.classList.toggle('open'));
+            nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+        }
+    </script>
+</body>
+</html>
