@@ -6,7 +6,6 @@
     <title>Mioxd 的个人博客 - Xash 插件更新日志</title>
     <meta name="description" content="Mioxd 的个人博客，MAO就是M有XD个人博客，Xash 服务端插件更新日志网站，记录插件开发进展与版本更新。">
     <meta name="keywords" content="mioxd个人博客,MAO就是M有XD个人博客,Xash,AMXX,服务端插件,Half-Life,开源">
-    <!-- Bing 网站验证标签 -->
     <meta name="msvalidate.01" content="122D5D5DD2D30747290EEE0BA6A0CB96" />
     <link rel="icon" type="image/x-icon" href="https://ys-c.ysepan.com/wap/yingbi/86KRFd075UjRjCh/gAL0lfAa69lUlhv77c57UFTK3Lr4UN/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,65 +34,28 @@
         .nav-links a:hover, .nav-links a.active { color:var(--accent); border-bottom-color:var(--accent); }
         .hamburger { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text); }
 
-        .lang-wrapper {
-            position: relative;
-            z-index: 200;
-        }
+        .lang-wrapper { position: relative; z-index: 200; }
         .lang-switch {
-            background: var(--accent-soft);
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            white-space: nowrap;
+            background: var(--accent-soft); border: 1px solid var(--accent); color: var(--accent);
+            padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+            cursor: pointer; transition: all 0.2s; white-space: nowrap;
         }
-        .lang-switch:hover {
-            background: var(--accent);
-            color: #fff;
-        }
+        .lang-switch:hover { background: var(--accent); color: #fff; }
         .lang-panel {
-            position: absolute;
-            top: 110%;
-            right: 0;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            padding: 8px 0;
-            min-width: 130px;
-            display: none;
-            flex-direction: column;
+            position: absolute; top: 110%; right: 0; background: var(--surface);
+            border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow);
+            padding: 8px 0; min-width: 130px; display: none; flex-direction: column;
         }
-        .lang-panel.open {
-            display: flex;
-        }
+        .lang-panel.open { display: flex; }
         .lang-option {
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            color: var(--text);
-            transition: background 0.2s;
-            background: none;
-            border: none;
-            text-align: left;
-            width: 100%;
+            padding: 10px 20px; cursor: pointer; font-size: 0.9rem; color: var(--text);
+            transition: background 0.2s; background: none; border: none; text-align: left; width: 100%;
         }
-        .lang-option:hover {
-            background: var(--accent-soft);
-            color: var(--accent);
-        }
-        .lang-option.active {
-            font-weight: 700;
-            color: var(--accent);
-        }
+        .lang-option:hover { background: var(--accent-soft); color: var(--accent); }
+        .lang-option.active { font-weight: 700; color: var(--accent); }
 
         .hero-image-section {
-            width:100%;
-            height:320px;
+            width:100%; height:320px;
             background: url('https://ys-e.ysepan.com/wap/yingbi/86KRFd075UjRjCh/RAL0lf9a84iCkJv99c57UFT68lr4UN/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%97%A5%E6%BC%AB-%E8%BD%BB%E9%9F%B3%E5%B0%91%E5%A5%B3.png') center/cover no-repeat;
             position:relative; display:flex; align-items:center; justify-content:center;
         }
@@ -109,7 +71,11 @@
         .about-card { background:var(--surface); border-radius:var(--radius); padding:36px 32px; box-shadow:var(--shadow); border:1px solid var(--border); margin-bottom:40px; }
         .about-card .intro-text { color:var(--text-light); line-height:1.8; font-size:0.95rem; margin-bottom:20px; }
         .social-row { display:flex; gap:16px; flex-wrap:wrap; }
-        .social-link { display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:var(--text-light); font-size:0.85rem; font-weight:500; padding:8px 18px; border-radius:24px; background:#f5f3ef; transition:all 0.2s; border:1px solid transparent; }
+        .social-link {
+            display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:var(--text-light);
+            font-size:0.85rem; font-weight:500; padding:8px 18px; border-radius:24px; background:#f5f3ef;
+            transition:all 0.2s; border:1px solid transparent;
+        }
         .social-link:hover { background:#e3dfd7; color:var(--accent); transform:translateY(-2px); box-shadow:0 4px 10px rgba(0,0,0,0.06); }
         .bilibili-icon { width:18px; height:18px; flex-shrink:0; color:#fb7299; }
         .github-icon { width:18px; height:18px; flex-shrink:0; color:#1e1e1e; }
@@ -128,16 +94,9 @@
         .footer { text-align:center; padding:20px; font-size:0.8rem; color:var(--text-light); border-top:1px solid var(--border); background:#fff; margin-top:auto; }
         .footer a { color:var(--accent); text-decoration:none; }
 
-        /* 语言切换样式 */
-        [data-lang] {
-            display: none !important;
-        }
-        html:not(.en) [data-lang="zh"] {
-            display: revert !important;
-        }
-        html.en [data-lang="en"] {
-            display: revert !important;
-        }
+        [data-lang] { display: none !important; }
+        html:not(.en) [data-lang="zh"] { display: revert !important; }
+        html.en [data-lang="en"] { display: revert !important; }
 
         @media (max-width:640px) {
             .hero-image-section { height:220px; }
@@ -193,27 +152,24 @@
                 </div>
             </div>
             <p class="intro-text" data-lang="zh">
-                这里是 <strong>Mioxd的个人博客</strong>，也就是 <strong>MAO就是M有XD个人博客</strong>。欢迎常来看看。
+                这里是 <strong>Mioxd的个人博客</strong>服务端 <strong>插件代码</strong>。欢迎常来看看。
             </p>
             <p class="intro-text" data-lang="en">
                 Welcome to <strong>Mioxd's personal blog</strong>. Stay tuned for updates.
             </p>
             <div class="social-row">
-                <a href="https://b23.tv/C3TnIpa" target="_blank" class="social-link">
+                <a href="https://b23.tv/C3TnIpa" target="_blank" rel="noopener" class="social-link">
                     <svg class="bilibili-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.223 3.086a1.25 1.25 0 0 1 0 1.768L17.08 5.996h1.17A3.75 3.75 0 0 1 22 9.747v7.5a3.75 3.75 0 0 1-3.75 3.75H5.75A3.75 3.75 0 0 1 2 17.247v-7.5a3.75 3.75 0 0 1 3.75-3.75h1.166L5.775 4.855a1.25 1.25 0 1 1 1.767-1.768l2.652 2.652c.079.079.145.165.198.257h3.213c.053-.092.12-.178.198-.257l2.652-2.652a1.25 1.25 0 0 1 1.768 0z"/></svg>
                     Bilibili
                 </a>
-                <a href="https://github.com/mioxdbil/xash1.6sma-amxx" target="_blank" class="social-link">
-                    <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-                    </svg>
+                <a href="https://github.com/mioxdbil/xash1.6sma-amxx-" target="_blank" rel="noopener" class="social-link">
+                    <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
                     <span data-lang="zh">Xash 插件</span>
                     <span data-lang="en">Xash Plugin</span>
                 </a>
             </div>
         </section>
 
-        <!-- 👇 新增静态介绍段落，提升搜索引擎友好度 -->
         <section style="background:var(--surface); border-radius:var(--radius); padding:32px; box-shadow:var(--shadow); border:1px solid var(--border); margin-bottom:40px;">
             <h2 data-lang="zh">欢迎来到 Mioxd 的个人博客</h2>
             <h2 data-lang="en">Welcome to Mioxd's Blog</h2>
@@ -241,7 +197,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
-        // ========== 语言切换功能 ==========
         function setLang(lang) {
             if (lang === 'en') {
                 document.documentElement.classList.add('en');
@@ -251,9 +206,7 @@
             localStorage.setItem('blog-lang', lang);
             document.querySelectorAll('.lang-option').forEach(opt => {
                 opt.classList.remove('active');
-                if (opt.dataset.langCode === lang) {
-                    opt.classList.add('active');
-                }
+                if (opt.dataset.langCode === lang) opt.classList.add('active');
             });
         }
 
@@ -268,8 +221,7 @@
         document.querySelectorAll('.lang-option').forEach(option => {
             option.addEventListener('click', function(e) {
                 e.stopPropagation();
-                const lang = this.dataset.langCode;
-                setLang(lang);
+                setLang(this.dataset.langCode);
                 langPanel.classList.remove('open');
             });
         });
@@ -283,9 +235,9 @@
             setLang(savedLang);
         })();
 
-        // ========== 加载 README 日志 ==========
+        // 正确仓库名：xash1.6sma-amxx-
         const owner = 'mioxdbil';
-        const repo = 'xash1.6sma-amxx';
+        const repo = 'xash1.6sma-amxx-';
 
         async function loadReadme() {
             const container = document.getElementById('readme-content');
@@ -303,7 +255,6 @@
         }
         loadReadme();
 
-        // ========== 汉堡菜单 ==========
         const btn = document.getElementById('hamburgerBtn');
         const nav = document.getElementById('navLinks');
         if(btn && nav) {
