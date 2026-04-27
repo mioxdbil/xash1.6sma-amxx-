@@ -79,6 +79,73 @@
         .social-link:hover { background:#e3dfd7; color:var(--accent); transform:translateY(-2px); box-shadow:0 4px 10px rgba(0,0,0,0.06); }
         .bilibili-icon { width:18px; height:18px; flex-shrink:0; color:#fb7299; }
         .github-icon { width:18px; height:18px; flex-shrink:0; color:#1e1e1e; }
+
+        /* 唱片播放器样式 */
+        .record-player {
+            background: var(--surface); border-radius: var(--radius); padding: 24px;
+            box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 40px;
+            display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center;
+        }
+        .record-disc {
+            width: 150px; height: 150px; border-radius: 50%;
+            background: conic-gradient(#111 0deg, #222 10deg, #111 20deg, #1a1a1a 30deg, #222 40deg, #111 50deg, #1a1a1a 60deg, #222 70deg, #111 80deg, #1a1a1a 90deg, #222 100deg, #111 110deg, #1a1a1a 120deg, #222 130deg, #111 140deg, #1a1a1a 150deg, #222 160deg, #111 170deg, #1a1a1a 180deg, #222 190deg, #111 200deg, #1a1a1a 210deg, #222 220deg, #111 230deg, #1a1a1a 240deg, #222 250deg, #111 260deg, #1a1a1a 270deg, #222 280deg, #111 290deg, #1a1a1a 300deg, #222 310deg, #111 320deg, #1a1a1a 330deg, #222 340deg, #111 350deg, #222 360deg);
+            position: relative; flex-shrink: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        }
+        .record-disc.spinning {
+            animation: spinDisc 3s linear infinite;
+            box-shadow: 0 8px 35px rgba(91,127,165,0.3);
+        }
+        @keyframes spinDisc { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .record-cover {
+            width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            border: 4px solid #2a2a2a; z-index: 2; background: var(--bg);
+        }
+        .record-center {
+            width: 16px; height: 16px; background: var(--surface); border-radius: 50%;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 3; border: 2px solid #999;
+        }
+        .record-groove {
+            position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,0.06); pointer-events: none;
+        }
+        .record-info { flex: 1; min-width: 160px; text-align: center; }
+        .record-title { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+        .record-artist { font-size: 0.85rem; color: var(--text-light); margin-bottom: 14px; }
+        .record-controls { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        .rec-btn {
+            background: var(--accent-soft); border: none; color: var(--accent);
+            width: 38px; height: 38px; border-radius: 50%; font-size: 0.9rem;
+            cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+        }
+        .rec-btn:hover { background: var(--accent); color: #fff; }
+        .rec-btn.play-btn { width: 48px; height: 48px; font-size: 1.1rem; background: var(--accent); color: #fff; }
+        .rec-btn.play-btn:hover { background: #4a5f85; }
+        .record-progress { width: 100%; margin-top: 12px; }
+        .progress-bar {
+            width: 100%; height: 4px; background: var(--border); border-radius: 2px;
+            cursor: pointer; position: relative;
+        }
+        .progress-fill { height: 100%; background: var(--accent); border-radius: 2px; width: 0%; transition: width 0.1s linear; }
+        .progress-time { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-light); margin-top: 4px; }
+        .record-playlist {
+            background: var(--surface); border-radius: var(--radius); padding: 20px 24px;
+            box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 40px;
+        }
+        .record-playlist h3 { font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 14px; color: var(--text); }
+        .playlist-item {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 8px 10px; border-radius: 8px; cursor: pointer; transition: background 0.2s; gap: 10px;
+        }
+        .playlist-item:hover { background: var(--accent-soft); }
+        .playlist-item.active { background: var(--accent-soft); font-weight: 600; }
+        .playlist-item .pl-index { width: 24px; font-size: 0.8rem; color: var(--text-light); text-align: center; }
+        .playlist-item .pl-info { flex: 1; }
+        .playlist-item .pl-title { font-size: 0.9rem; }
+        .playlist-item .pl-artist { font-size: 0.7rem; color: var(--text-light); }
+        .playlist-item .pl-del { background: none; border: none; color: #ccc; cursor: pointer; font-size: 1rem; }
+        .playlist-item .pl-del:hover { color: #e55; }
+
         .blog-posts-section { background:var(--surface); border-radius:var(--radius); padding:32px; box-shadow:var(--shadow); border:1px solid var(--border); }
         .blog-posts-section h2 { font-family:var(--font-serif); font-size:1.5rem; font-weight:700; margin-bottom:24px; display:flex; align-items:center; gap:8px; }
         #readme-content { line-height:1.8; color:var(--text-light); word-break:break-word; }
@@ -104,8 +171,11 @@
             .nav-links { display:none; position:absolute; top:64px; right:12px; background:rgba(255,255,255,0.97); flex-direction:column; gap:14px; padding:18px 24px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.08); border:1px solid var(--border); }
             .nav-links.open { display:flex; }
             .hamburger { display:block; }
-            .about-card, .blog-posts-section { padding:24px 20px; }
+            .about-card, .blog-posts-section, .record-player, .record-playlist { padding:24px 20px; }
             .profile-header { flex-direction:column; align-items:flex-start; gap:12px; }
+            .record-player { flex-direction: column; }
+            .record-disc { width: 120px; height: 120px; }
+            .record-cover { width: 64px; height: 64px; }
         }
     </style>
 </head>
@@ -138,53 +208,73 @@
     <main class="main-content">
         <section class="about-card">
             <div class="profile-header">
-                <img
-                    src="https://raw.githubusercontent.com/mioxdbil/xash1.6sma-amxx-/main/Screenshot_2025-12-01-13-19-14-05_2332cb9b27b851b548ba47a91682926c.jpg"
-                    alt="Mioxd 的头像"
-                    class="avatar"
-                    loading="lazy"
-                    onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 72 72%22%3E%3Crect fill=%22%23eef3fa%22 width=%2272%22 height=%2272%22/%3E%3Ctext fill=%22%235b7fa5%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.35em%22 font-size=%2224%22%3EM%3C/text%3E%3C/svg%3E';"
-                >
+                <img src="https://raw.githubusercontent.com/mioxdbil/xash1.6sma-amxx-/main/Screenshot_2025-12-01-13-19-14-05_2332cb9b27b851b548ba47a91682926c.jpg" alt="Mioxd 的头像" class="avatar" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 72 72%22%3E%3Crect fill=%22%23eef3fa%22 width=%2272%22 height=%2272%22/%3E%3Ctext fill=%22%235b7fa5%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.35em%22 font-size=%2224%22%3EM%3C/text%3E%3C/svg%3E';">
                 <div class="profile-info">
                     <h2>Mioxd</h2>
                     <p class="profile-subtitle" data-lang="zh">mioxd博客 · 记录与分享</p>
                     <p class="profile-subtitle" data-lang="en">Mioxd's Blog · Record & Share</p>
                 </div>
             </div>
-            <p class="intro-text" data-lang="zh">
-                这里是 <strong>Mioxd的个人博客</strong>服务端 <strong>插件代码</strong>。欢迎常来看看。
-            </p>
-            <p class="intro-text" data-lang="en">
-                Welcome to <strong>Mioxd's personal blog</strong>. Stay tuned for updates.
-            </p>
+            <p class="intro-text" data-lang="zh">这里是 <strong>Mioxd的个人博客</strong>服务端 <strong>插件代码</strong>。欢迎常来看看。</p>
+            <p class="intro-text" data-lang="en">Welcome to <strong>Mioxd's personal blog</strong>. Stay tuned for updates.</p>
             <div class="social-row">
                 <a href="https://b23.tv/C3TnIpa" target="_blank" rel="noopener" class="social-link">
-                    <svg class="bilibili-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.223 3.086a1.25 1.25 0 0 1 0 1.768L17.08 5.996h1.17A3.75 3.75 0 0 1 22 9.747v7.5a3.75 3.75 0 0 1-3.75 3.75H5.75A3.75 3.75 0 0 1 2 17.247v-7.5a3.75 3.75 0 0 1 3.75-3.75h1.166L5.775 4.855a1.25 1.25 0 1 1 1.767-1.768l2.652 2.652c.079.079.145.165.198.257h3.213c.053-.092.12-.178.198-.257l2.652-2.652a1.25 1.25 0 0 1 1.768 0z"/></svg>
-                    Bilibili
+                    <svg class="bilibili-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.223 3.086a1.25 1.25 0 0 1 0 1.768L17.08 5.996h1.17A3.75 3.75 0 0 1 22 9.747v7.5a3.75 3.75 0 0 1-3.75 3.75H5.75A3.75 3.75 0 0 1 2 17.247v-7.5a3.75 3.75 0 0 1 3.75-3.75h1.166L5.775 4.855a1.25 1.25 0 1 1 1.767-1.768l2.652 2.652c.079.079.145.165.198.257h3.213c.053-.092.12-.178.198-.257l2.652-2.652a1.25 1.25 0 0 1 1.768 0z"/></svg> Bilibili
                 </a>
                 <a href="https://github.com/mioxdbil/xash1.6sma-amxx-" target="_blank" rel="noopener" class="social-link">
                     <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                    <span data-lang="zh">Xash 插件</span>
-                    <span data-lang="en">Xash Plugin</span>
+                    <span data-lang="zh">Xash 插件</span><span data-lang="en">Xash Plugin</span>
                 </a>
             </div>
+        </section>
+
+        <!-- 💿 唱片播放器 -->
+        <section class="record-player">
+            <div class="record-disc" id="recordDisc">
+                <div class="record-groove" style="width:120px;height:120px;top:15px;left:15px;"></div>
+                <div class="record-groove" style="width:100px;height:100px;top:25px;left:25px;"></div>
+                <div class="record-groove" style="width:80px;height:80px;top:35px;left:35px;"></div>
+                <img class="record-cover" id="recCover" src="https://via.placeholder.com/80" alt="封面">
+                <div class="record-center"></div>
+            </div>
+            <div class="record-info">
+                <div class="record-title" id="recTitle">未选择音乐</div>
+                <div class="record-artist" id="recArtist">-</div>
+                <div class="record-controls">
+                    <button class="rec-btn" id="recPrev">⏮</button>
+                    <button class="rec-btn play-btn" id="recPlay">▶</button>
+                    <button class="rec-btn" id="recNext">⏭</button>
+                </div>
+                <div class="record-progress">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-time">
+                        <span id="currentTime">00:00</span>
+                        <span id="totalTime">00:00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 播放列表 -->
+        <section class="record-playlist">
+            <h3 data-lang="zh">📋 播放列表</h3>
+            <h3 data-lang="en">📋 Playlist</h3>
+            <div id="recPlaylist"></div>
         </section>
 
         <section style="background:var(--surface); border-radius:var(--radius); padding:32px; box-shadow:var(--shadow); border:1px solid var(--border); margin-bottom:40px;">
             <h2 data-lang="zh">欢迎来到 Mioxd 的个人博客</h2>
             <h2 data-lang="en">Welcome to Mioxd's Blog</h2>
-            <p data-lang="zh">本博客是 Xash 服务端插件（Xash Server Plugin）的更新日志站点，由 Mioxd 个人维护。这里会持续记录 AMXX 插件开发、版本更新与功能调整，所有原创代码均在 GitHub 开源。</p>
+            <p data-lang="zh">本博客是 Xash 服务端插件的更新日志站点，由 Mioxd 个人维护。记录插件开发、版本更新与功能调整，所有原创代码均在 GitHub 开源。</p>
             <p data-lang="en">This is the changelog site for Xash server plugins, maintained by Mioxd. It documents AMXX plugin development, version updates, and feature changes. All original code is open source on GitHub.</p>
-            <p data-lang="zh">关键词：Mioxd个人博客、Xash插件、AMXX、服务端开发日志。</p>
-            <p data-lang="en">Keywords: Mioxd personal blog, Xash plugin, AMXX, server development log.</p>
         </section>
 
         <section class="blog-posts-section">
             <h2 data-lang="zh">📝 最新日志</h2>
             <h2 data-lang="en">📝 Latest Log</h2>
-            <div id="readme-content">
-                <p>正在加载内容...</p>
-            </div>
+            <div id="readme-content"><p>正在加载内容...</p></div>
         </section>
     </main>
 
@@ -197,70 +287,173 @@
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
+        // 语言切换功能
         function setLang(lang) {
-            if (lang === 'en') {
-                document.documentElement.classList.add('en');
-            } else {
-                document.documentElement.classList.remove('en');
-            }
+            if (lang === 'en') document.documentElement.classList.add('en');
+            else document.documentElement.classList.remove('en');
             localStorage.setItem('blog-lang', lang);
             document.querySelectorAll('.lang-option').forEach(opt => {
                 opt.classList.remove('active');
                 if (opt.dataset.langCode === lang) opt.classList.add('active');
             });
         }
-
-        const langToggleBtn = document.getElementById('langToggleBtn');
-        const langPanel = document.getElementById('langPanel');
-
-        langToggleBtn.addEventListener('click', function(e) {
+        document.getElementById('langToggleBtn').addEventListener('click', function(e) {
             e.stopPropagation();
-            langPanel.classList.toggle('open');
+            document.getElementById('langPanel').classList.toggle('open');
         });
-
-        document.querySelectorAll('.lang-option').forEach(option => {
-            option.addEventListener('click', function(e) {
+        document.querySelectorAll('.lang-option').forEach(opt => {
+            opt.addEventListener('click', function(e) {
                 e.stopPropagation();
                 setLang(this.dataset.langCode);
-                langPanel.classList.remove('open');
+                document.getElementById('langPanel').classList.remove('open');
             });
         });
+        document.addEventListener('click', () => document.getElementById('langPanel').classList.remove('open'));
+        setLang(localStorage.getItem('blog-lang') || 'zh');
 
-        document.addEventListener('click', function() {
-            langPanel.classList.remove('open');
-        });
-
-        (function() {
-            const savedLang = localStorage.getItem('blog-lang') || 'zh';
-            setLang(savedLang);
-        })();
-
-        // 正确仓库名：xash1.6sma-amxx-
+        // 加载 README
         const owner = 'mioxdbil';
         const repo = 'xash1.6sma-amxx-';
-
         async function loadReadme() {
-            const container = document.getElementById('readme-content');
+            const c = document.getElementById('readme-content');
             try {
-                const response = await fetch(
-                    `https://api.github.com/repos/${owner}/${repo}/readme`,
-                    { headers: { Accept: 'application/vnd.github.v3.raw' } }
-                );
-                if (!response.ok) throw new Error('无法加载 README.md');
-                const markdown = await response.text();
-                container.innerHTML = marked.parse(markdown);
-            } catch (error) {
-                container.innerHTML = `<p>⚠️ 内容加载失败：${error.message}</p>`;
-            }
+                const r = await fetch(`https://api.github.com/repos/${owner}/${repo}/readme`, { headers: { Accept: 'application/vnd.github.v3.raw' } });
+                if (!r.ok) throw new Error('无法加载 README.md');
+                c.innerHTML = marked.parse(await r.text());
+            } catch(e) { c.innerHTML = `<p>⚠️ 内容加载失败：${e.message}</p>`; }
         }
         loadReadme();
 
-        const btn = document.getElementById('hamburgerBtn');
-        const nav = document.getElementById('navLinks');
-        if(btn && nav) {
-            btn.addEventListener('click', () => nav.classList.toggle('open'));
-            nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+        // 汉堡菜单
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navLinks = document.getElementById('navLinks');
+        hamburgerBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+        // ========== 唱片播放器逻辑 ==========
+        // 歌单（可自由修改或新增）
+        const myPlaylist = [
+            {
+                title: "【剧场版 ED】Singing!",
+                artist: "哔哩哔哩",
+                cover: "https://via.placeholder.com/160", // 可替换为实际封面图链接
+                url: "https://ys-e.ysepan.com/wap/yingbi/86KRFd075UjRjCh/OAL0lfAa82lUljv9Qc57US871kr4UN/%E3%80%90%E5%89%A7%E5%9C%BA%E7%89%88%20ED%E3%80%91Singing!_%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9_bilibili.mp3"
+            },
+            {
+                title: "示例音乐 - 阳光",
+                artist: "未知歌手",
+                cover: "https://via.placeholder.com/160",
+                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+            }
+        ];
+
+        let currentTrack = 0;
+        let isPlaying = false;
+        const audio = new Audio();
+
+        // DOM 元素
+        const recordDisc = document.getElementById('recordDisc');
+        const recPlayBtn = document.getElementById('recPlay');
+        const recPrevBtn = document.getElementById('recPrev');
+        const recNextBtn = document.getElementById('recNext');
+        const recTitle = document.getElementById('recTitle');
+        const recArtist = document.getElementById('recArtist');
+        const recCover = document.getElementById('recCover');
+        const progressFill = document.getElementById('progressFill');
+        const progressBar = document.getElementById('progressBar');
+        const currentTimeEl = document.getElementById('currentTime');
+        const totalTimeEl = document.getElementById('totalTime');
+        const recPlaylist = document.getElementById('recPlaylist');
+
+        function formatTime(seconds) {
+            const d = new Date(seconds * 1000);
+            return d.toISOString().substr(14, 5);
         }
+
+        function renderPlaylist() {
+            recPlaylist.innerHTML = myPlaylist.map((song, i) => `
+                <div class="playlist-item ${i === currentTrack ? 'active' : ''}" onclick="playTrack(${i})">
+                    <span class="pl-index">${i+1}</span>
+                    <div class="pl-info">
+                        <div class="pl-title">${song.title}</div>
+                        <div class="pl-artist">${song.artist}</div>
+                    </div>
+                    <span class="pl-del" onclick="event.stopPropagation();">♫</span>
+                </div>
+            `).join('');
+        }
+
+        function loadTrack(index) {
+            if (!myPlaylist.length) return;
+            currentTrack = index;
+            const song = myPlaylist[currentTrack];
+            audio.src = song.url;
+            recTitle.textContent = song.title;
+            recArtist.textContent = song.artist;
+            if (song.cover) recCover.src = song.cover;
+            audio.load();
+            renderPlaylist();
+        }
+
+        async function playTrack(index) {
+            if (index !== undefined) loadTrack(index);
+            try {
+                await audio.play();
+                isPlaying = true;
+                recPlayBtn.textContent = '⏸';
+                recordDisc.classList.add('spinning');
+            } catch {}
+        }
+
+        function pauseTrack() {
+            audio.pause();
+            isPlaying = false;
+            recPlayBtn.textContent = '▶';
+            recordDisc.classList.remove('spinning');
+        }
+
+        recPlayBtn.addEventListener('click', () => {
+            if (!myPlaylist.length) return;
+            isPlaying ? pauseTrack() : playTrack();
+        });
+
+        recPrevBtn.addEventListener('click', () => {
+            if (!myPlaylist.length) return;
+            currentTrack = (currentTrack - 1 + myPlaylist.length) % myPlaylist.length;
+            loadTrack(currentTrack);
+            if (isPlaying) playTrack();
+        });
+
+        recNextBtn.addEventListener('click', () => {
+            if (!myPlaylist.length) return;
+            currentTrack = (currentTrack + 1) % myPlaylist.length;
+            loadTrack(currentTrack);
+            if (isPlaying) playTrack();
+        });
+
+        audio.addEventListener('ended', () => {
+            currentTrack = (currentTrack + 1) % myPlaylist.length;
+            loadTrack(currentTrack);
+            playTrack();
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+                totalTimeEl.textContent = formatTime(audio.duration);
+            }
+        });
+
+        progressBar.addEventListener('click', (e) => {
+            if (!audio.duration) return;
+            const rect = progressBar.getBoundingClientRect();
+            audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+        });
+
+        // 初始化
+        if (myPlaylist.length) loadTrack(0);
+        renderPlaylist();
     </script>
 </body>
 </html>
