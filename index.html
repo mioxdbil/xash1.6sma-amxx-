@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mioxd 的个人博客</title>
+    <!-- 👇 新增的网站图标 -->
+    <link rel="icon" type="image/x-icon" href="https://ys-c.ysepan.com/wap/yingbi/86KRFd075UjRjCh/gAL0lfAa69lUlhv77c57UFTK3Lr4UN/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -30,7 +32,6 @@
         .nav-links a:hover, .nav-links a.active { color:var(--accent); border-bottom-color:var(--accent); }
         .hamburger { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text); }
 
-        /* 语言切换按钮和下拉面板 */
         .lang-wrapper {
             position: relative;
             z-index: 200;
@@ -124,7 +125,6 @@
         .footer { text-align:center; padding:20px; font-size:0.8rem; color:var(--text-light); border-top:1px solid var(--border); background:#fff; margin-top:auto; }
         .footer a { color:var(--accent); text-decoration:none; }
 
-        /* 语言切换样式 */
         [data-lang] {
             display: none !important;
         }
@@ -154,7 +154,6 @@
             <li><a href="#" data-lang="zh">文章</a><a href="#" data-lang="en">Posts</a></li>
             <li><a href="#" data-lang="zh">关于</a><a href="#" data-lang="en">About</a></li>
         </ul>
-        <!-- 语言选择器 -->
         <div class="lang-wrapper">
             <button class="lang-switch" id="langToggleBtn" title="选择语言 / Select Language">🌐</button>
             <div class="lang-panel" id="langPanel">
@@ -236,7 +235,6 @@
                 document.documentElement.classList.remove('en');
             }
             localStorage.setItem('blog-lang', lang);
-            // 更新面板中的激活状态
             document.querySelectorAll('.lang-option').forEach(opt => {
                 opt.classList.remove('active');
                 if (opt.dataset.langCode === lang) {
@@ -245,7 +243,6 @@
             });
         }
 
-        // 语言面板展开/收起
         const langToggleBtn = document.getElementById('langToggleBtn');
         const langPanel = document.getElementById('langPanel');
 
@@ -254,7 +251,6 @@
             langPanel.classList.toggle('open');
         });
 
-        // 点击面板中的语言选项
         document.querySelectorAll('.lang-option').forEach(option => {
             option.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -264,12 +260,10 @@
             });
         });
 
-        // 点击页面其他地方关闭面板
         document.addEventListener('click', function() {
             langPanel.classList.remove('open');
         });
 
-        // 页面加载时读取用户上次的语言选择（默认中文）
         (function() {
             const savedLang = localStorage.getItem('blog-lang') || 'zh';
             setLang(savedLang);
