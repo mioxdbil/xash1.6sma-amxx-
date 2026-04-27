@@ -79,73 +79,6 @@
         .social-link:hover { background:#e3dfd7; color:var(--accent); transform:translateY(-2px); box-shadow:0 4px 10px rgba(0,0,0,0.06); }
         .bilibili-icon { width:18px; height:18px; flex-shrink:0; color:#fb7299; }
         .github-icon { width:18px; height:18px; flex-shrink:0; color:#1e1e1e; }
-
-        /* 唱片播放器样式 */
-        .record-player {
-            background: var(--surface); border-radius: var(--radius); padding: 24px;
-            box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 40px;
-            display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center;
-        }
-        .record-disc {
-            width: 150px; height: 150px; border-radius: 50%;
-            background: conic-gradient(#111 0deg, #222 10deg, #111 20deg, #1a1a1a 30deg, #222 40deg, #111 50deg, #1a1a1a 60deg, #222 70deg, #111 80deg, #1a1a1a 90deg, #222 100deg, #111 110deg, #1a1a1a 120deg, #222 130deg, #111 140deg, #1a1a1a 150deg, #222 160deg, #111 170deg, #1a1a1a 180deg, #222 190deg, #111 200deg, #1a1a1a 210deg, #222 220deg, #111 230deg, #1a1a1a 240deg, #222 250deg, #111 260deg, #1a1a1a 270deg, #222 280deg, #111 290deg, #1a1a1a 300deg, #222 310deg, #111 320deg, #1a1a1a 330deg, #222 340deg, #111 350deg, #222 360deg);
-            position: relative; flex-shrink: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-        }
-        .record-disc.spinning {
-            animation: spinDisc 3s linear infinite;
-            box-shadow: 0 8px 35px rgba(91,127,165,0.3);
-        }
-        @keyframes spinDisc { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .record-cover {
-            width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            border: 4px solid #2a2a2a; z-index: 2; background: var(--bg);
-        }
-        .record-center {
-            width: 16px; height: 16px; background: var(--surface); border-radius: 50%;
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            z-index: 3; border: 2px solid #999;
-        }
-        .record-groove {
-            position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,0.06); pointer-events: none;
-        }
-        .record-info { flex: 1; min-width: 160px; text-align: center; }
-        .record-title { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-        .record-artist { font-size: 0.85rem; color: var(--text-light); margin-bottom: 14px; }
-        .record-controls { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
-        .rec-btn {
-            background: var(--accent-soft); border: none; color: var(--accent);
-            width: 38px; height: 38px; border-radius: 50%; font-size: 0.9rem;
-            cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center;
-        }
-        .rec-btn:hover { background: var(--accent); color: #fff; }
-        .rec-btn.play-btn { width: 48px; height: 48px; font-size: 1.1rem; background: var(--accent); color: #fff; }
-        .rec-btn.play-btn:hover { background: #4a5f85; }
-        .record-progress { width: 100%; margin-top: 12px; }
-        .progress-bar {
-            width: 100%; height: 4px; background: var(--border); border-radius: 2px;
-            cursor: pointer; position: relative;
-        }
-        .progress-fill { height: 100%; background: var(--accent); border-radius: 2px; width: 0%; transition: width 0.1s linear; }
-        .progress-time { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-light); margin-top: 4px; }
-        .record-playlist {
-            background: var(--surface); border-radius: var(--radius); padding: 20px 24px;
-            box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 40px;
-        }
-        .record-playlist h3 { font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 14px; color: var(--text); }
-        .playlist-item {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 8px 10px; border-radius: 8px; cursor: pointer; transition: background 0.2s; gap: 10px;
-        }
-        .playlist-item:hover { background: var(--accent-soft); }
-        .playlist-item.active { background: var(--accent-soft); font-weight: 600; }
-        .playlist-item .pl-index { width: 24px; font-size: 0.8rem; color: var(--text-light); text-align: center; }
-        .playlist-item .pl-info { flex: 1; }
-        .playlist-item .pl-title { font-size: 0.9rem; }
-        .playlist-item .pl-artist { font-size: 0.7rem; color: var(--text-light); }
-        .playlist-item .pl-del { background: none; border: none; color: #ccc; cursor: pointer; font-size: 1rem; }
-        .playlist-item .pl-del:hover { color: #e55; }
-
         .blog-posts-section { background:var(--surface); border-radius:var(--radius); padding:32px; box-shadow:var(--shadow); border:1px solid var(--border); }
         .blog-posts-section h2 { font-family:var(--font-serif); font-size:1.5rem; font-weight:700; margin-bottom:24px; display:flex; align-items:center; gap:8px; }
         #readme-content { line-height:1.8; color:var(--text-light); word-break:break-word; }
@@ -171,11 +104,8 @@
             .nav-links { display:none; position:absolute; top:64px; right:12px; background:rgba(255,255,255,0.97); flex-direction:column; gap:14px; padding:18px 24px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.08); border:1px solid var(--border); }
             .nav-links.open { display:flex; }
             .hamburger { display:block; }
-            .about-card, .blog-posts-section, .record-player, .record-playlist { padding:24px 20px; }
+            .about-card, .blog-posts-section { padding:24px 20px; }
             .profile-header { flex-direction:column; align-items:flex-start; gap:12px; }
-            .record-player { flex-direction: column; }
-            .record-disc { width: 120px; height: 120px; }
-            .record-cover { width: 64px; height: 64px; }
         }
     </style>
 </head>
@@ -228,42 +158,6 @@
             </div>
         </section>
 
-        <!-- 💿 唱片播放器 -->
-        <section class="record-player">
-            <div class="record-disc" id="recordDisc">
-                <div class="record-groove" style="width:120px;height:120px;top:15px;left:15px;"></div>
-                <div class="record-groove" style="width:100px;height:100px;top:25px;left:25px;"></div>
-                <div class="record-groove" style="width:80px;height:80px;top:35px;left:35px;"></div>
-                <img class="record-cover" id="recCover" src="https://via.placeholder.com/80" alt="封面">
-                <div class="record-center"></div>
-            </div>
-            <div class="record-info">
-                <div class="record-title" id="recTitle">未选择音乐</div>
-                <div class="record-artist" id="recArtist">-</div>
-                <div class="record-controls">
-                    <button class="rec-btn" id="recPrev">⏮</button>
-                    <button class="rec-btn play-btn" id="recPlay">▶</button>
-                    <button class="rec-btn" id="recNext">⏭</button>
-                </div>
-                <div class="record-progress">
-                    <div class="progress-bar" id="progressBar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <div class="progress-time">
-                        <span id="currentTime">00:00</span>
-                        <span id="totalTime">00:00</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 播放列表 -->
-        <section class="record-playlist">
-            <h3 data-lang="zh">📋 播放列表</h3>
-            <h3 data-lang="en">📋 Playlist</h3>
-            <div id="recPlaylist"></div>
-        </section>
-
         <section style="background:var(--surface); border-radius:var(--radius); padding:32px; box-shadow:var(--shadow); border:1px solid var(--border); margin-bottom:40px;">
             <h2 data-lang="zh">欢迎来到 Mioxd 的个人博客</h2>
             <h2 data-lang="en">Welcome to Mioxd's Blog</h2>
@@ -285,175 +179,90 @@
         </p>
     </footer>
 
+    <!-- gui-MusicPlayer 播放器 -->
+    <div id="gui-MusicPlayer" data-songChart="黑胶vip热歌榜" data-cdnName="https://y.cenguigui.cn/js" data-themeColor="gui-wineRed" data-random="true" data-fadeOutAutoplay></div>
+    <script src="https://y.cenguigui.cn/js/gui-MusicPlayer/js/gui-MusicPlayer.js"></script>
+
+    <!-- 进度条拖动修复脚本 -->
+    <script>
+        (function fixMusicPlayerProgress() {
+            // 修复来源：https://www.cenguigui.cn
+            // 用于解决gui-MusicPlayer悬浮播放器进度条无法拖动/点击的问题
+            function patchPlayer() {
+                const progressBar = document.querySelector('#gui-MusicPlayer .gui-music-progress-bar');
+                const audio = document.querySelector('#gui-MusicPlayer audio');
+                if (!progressBar || !audio) return setTimeout(patchPlayer, 500);
+
+                // 监听鼠标/触摸按下事件
+                progressBar.addEventListener('mousedown', function(e) {
+                    e.stopPropagation();
+                    const rect = progressBar.getBoundingClientRect();
+                    const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                    audio.currentTime = ratio * audio.duration;
+                    
+                    const onMove = (e) => {
+                        const r = progressBar.getBoundingClientRect();
+                        const ratio = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+                        audio.currentTime = ratio * audio.duration;
+                    };
+                    const onUp = () => {
+                        document.removeEventListener('mousemove', onMove);
+                        document.removeEventListener('mouseup', onUp);
+                    };
+                    document.addEventListener('mousemove', onMove);
+                    document.addEventListener('mouseup', onUp);
+                });
+
+                // 监听触摸事件（移动端）
+                progressBar.addEventListener('touchstart', function(e) {
+                    e.stopPropagation();
+                    const rect = progressBar.getBoundingClientRect();
+                    const ratio = Math.max(0, Math.min(1, (e.touches[0].clientX - rect.left) / rect.width));
+                    audio.currentTime = ratio * audio.duration;
+                    
+                    const onMove = (e) => {
+                        const r = progressBar.getBoundingClientRect();
+                        const ratio = Math.max(0, Math.min(1, (e.touches[0].clientX - r.left) / r.width));
+                        audio.currentTime = ratio * audio.duration;
+                    };
+                    const onUp = () => {
+                        document.removeEventListener('touchmove', onMove);
+                        document.removeEventListener('touchend', onUp);
+                    };
+                    document.addEventListener('touchmove', onMove);
+                    document.addEventListener('touchend', onUp);
+                });
+
+                // 监听点击事件
+                progressBar.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const rect = progressBar.getBoundingClientRect();
+                    const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                    audio.currentTime = ratio * audio.duration;
+                });
+            }
+            if (document.readyState === 'complete') patchPlayer();
+            else window.addEventListener('load', patchPlayer);
+        })();
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
-        // 语言切换功能
-        function setLang(lang) {
-            if (lang === 'en') document.documentElement.classList.add('en');
-            else document.documentElement.classList.remove('en');
-            localStorage.setItem('blog-lang', lang);
-            document.querySelectorAll('.lang-option').forEach(opt => {
-                opt.classList.remove('active');
-                if (opt.dataset.langCode === lang) opt.classList.add('active');
-            });
-        }
-        document.getElementById('langToggleBtn').addEventListener('click', function(e) {
-            e.stopPropagation();
-            document.getElementById('langPanel').classList.toggle('open');
-        });
-        document.querySelectorAll('.lang-option').forEach(opt => {
-            opt.addEventListener('click', function(e) {
-                e.stopPropagation();
-                setLang(this.dataset.langCode);
-                document.getElementById('langPanel').classList.remove('open');
-            });
-        });
+        // 语言切换
+        function setLang(lang) { if (lang === 'en') document.documentElement.classList.add('en'); else document.documentElement.classList.remove('en'); localStorage.setItem('blog-lang', lang); document.querySelectorAll('.lang-option').forEach(opt => { opt.classList.remove('active'); if (opt.dataset.langCode === lang) opt.classList.add('active'); }); }
+        document.getElementById('langToggleBtn').addEventListener('click', function(e) { e.stopPropagation(); document.getElementById('langPanel').classList.toggle('open'); });
+        document.querySelectorAll('.lang-option').forEach(opt => { opt.addEventListener('click', function(e) { e.stopPropagation(); setLang(this.dataset.langCode); document.getElementById('langPanel').classList.remove('open'); }); });
         document.addEventListener('click', () => document.getElementById('langPanel').classList.remove('open'));
         setLang(localStorage.getItem('blog-lang') || 'zh');
 
-        // 加载 README
-        const owner = 'mioxdbil';
-        const repo = 'xash1.6sma-amxx-';
-        async function loadReadme() {
-            const c = document.getElementById('readme-content');
-            try {
-                const r = await fetch(`https://api.github.com/repos/${owner}/${repo}/readme`, { headers: { Accept: 'application/vnd.github.v3.raw' } });
-                if (!r.ok) throw new Error('无法加载 README.md');
-                c.innerHTML = marked.parse(await r.text());
-            } catch(e) { c.innerHTML = `<p>⚠️ 内容加载失败：${e.message}</p>`; }
-        }
-        loadReadme();
+        // README 加载
+        const owner = 'mioxdbil', repo = 'xash1.6sma-amxx-';
+        (async function() { const c = document.getElementById('readme-content'); try { const r = await fetch(`https://api.github.com/repos/${owner}/${repo}/readme`, { headers: { Accept: 'application/vnd.github.v3.raw' } }); if (!r.ok) throw new Error('无法加载 README.md'); c.innerHTML = marked.parse(await r.text()); } catch(e) { c.innerHTML = `<p>⚠️ 内容加载失败：${e.message}</p>`; } })();
 
         // 汉堡菜单
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const navLinks = document.getElementById('navLinks');
+        const hamburgerBtn = document.getElementById('hamburgerBtn'), navLinks = document.getElementById('navLinks');
         hamburgerBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
         navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-        // ========== 唱片播放器逻辑 ==========
-        // 歌单（可自由修改或新增）
-        const myPlaylist = [
-            {
-                title: "【剧场版 ED】Singing!",
-                artist: "哔哩哔哩",
-                cover: "https://via.placeholder.com/160", // 可替换为实际封面图链接
-                url: "https://ys-e.ysepan.com/wap/yingbi/86KRFd075UjRjCh/OAL0lfAa82lUljv9Qc57US871kr4UN/%E3%80%90%E5%89%A7%E5%9C%BA%E7%89%88%20ED%E3%80%91Singing!_%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9_bilibili.mp3"
-            },
-            {
-                title: "示例音乐 - 阳光",
-                artist: "未知歌手",
-                cover: "https://via.placeholder.com/160",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-            }
-        ];
-
-        let currentTrack = 0;
-        let isPlaying = false;
-        const audio = new Audio();
-
-        // DOM 元素
-        const recordDisc = document.getElementById('recordDisc');
-        const recPlayBtn = document.getElementById('recPlay');
-        const recPrevBtn = document.getElementById('recPrev');
-        const recNextBtn = document.getElementById('recNext');
-        const recTitle = document.getElementById('recTitle');
-        const recArtist = document.getElementById('recArtist');
-        const recCover = document.getElementById('recCover');
-        const progressFill = document.getElementById('progressFill');
-        const progressBar = document.getElementById('progressBar');
-        const currentTimeEl = document.getElementById('currentTime');
-        const totalTimeEl = document.getElementById('totalTime');
-        const recPlaylist = document.getElementById('recPlaylist');
-
-        function formatTime(seconds) {
-            const d = new Date(seconds * 1000);
-            return d.toISOString().substr(14, 5);
-        }
-
-        function renderPlaylist() {
-            recPlaylist.innerHTML = myPlaylist.map((song, i) => `
-                <div class="playlist-item ${i === currentTrack ? 'active' : ''}" onclick="playTrack(${i})">
-                    <span class="pl-index">${i+1}</span>
-                    <div class="pl-info">
-                        <div class="pl-title">${song.title}</div>
-                        <div class="pl-artist">${song.artist}</div>
-                    </div>
-                    <span class="pl-del" onclick="event.stopPropagation();">♫</span>
-                </div>
-            `).join('');
-        }
-
-        function loadTrack(index) {
-            if (!myPlaylist.length) return;
-            currentTrack = index;
-            const song = myPlaylist[currentTrack];
-            audio.src = song.url;
-            recTitle.textContent = song.title;
-            recArtist.textContent = song.artist;
-            if (song.cover) recCover.src = song.cover;
-            audio.load();
-            renderPlaylist();
-        }
-
-        async function playTrack(index) {
-            if (index !== undefined) loadTrack(index);
-            try {
-                await audio.play();
-                isPlaying = true;
-                recPlayBtn.textContent = '⏸';
-                recordDisc.classList.add('spinning');
-            } catch {}
-        }
-
-        function pauseTrack() {
-            audio.pause();
-            isPlaying = false;
-            recPlayBtn.textContent = '▶';
-            recordDisc.classList.remove('spinning');
-        }
-
-        recPlayBtn.addEventListener('click', () => {
-            if (!myPlaylist.length) return;
-            isPlaying ? pauseTrack() : playTrack();
-        });
-
-        recPrevBtn.addEventListener('click', () => {
-            if (!myPlaylist.length) return;
-            currentTrack = (currentTrack - 1 + myPlaylist.length) % myPlaylist.length;
-            loadTrack(currentTrack);
-            if (isPlaying) playTrack();
-        });
-
-        recNextBtn.addEventListener('click', () => {
-            if (!myPlaylist.length) return;
-            currentTrack = (currentTrack + 1) % myPlaylist.length;
-            loadTrack(currentTrack);
-            if (isPlaying) playTrack();
-        });
-
-        audio.addEventListener('ended', () => {
-            currentTrack = (currentTrack + 1) % myPlaylist.length;
-            loadTrack(currentTrack);
-            playTrack();
-        });
-
-        audio.addEventListener('timeupdate', () => {
-            if (audio.duration) {
-                progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
-                currentTimeEl.textContent = formatTime(audio.currentTime);
-                totalTimeEl.textContent = formatTime(audio.duration);
-            }
-        });
-
-        progressBar.addEventListener('click', (e) => {
-            if (!audio.duration) return;
-            const rect = progressBar.getBoundingClientRect();
-            audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
-        });
-
-        // 初始化
-        if (myPlaylist.length) loadTrack(0);
-        renderPlaylist();
     </script>
 </body>
 </html>
