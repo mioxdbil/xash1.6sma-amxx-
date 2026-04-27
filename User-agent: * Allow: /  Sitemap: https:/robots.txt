@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mioxdbil.github.io/sitemap.xml
+Sitemap: https://mioxdbil.github.io/xash1.6sma-amxx-/sitemap.xml
